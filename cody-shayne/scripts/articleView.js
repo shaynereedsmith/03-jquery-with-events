@@ -97,8 +97,15 @@ articleView.setTeasers = function() {
   //       process any .read-on clicks that happen within child nodes.
   $('.read-on').click(function(event) {
     event.preventDefault();
-    $(event.target).parent().children().children().show();
-    $(event.target).html('Show Less &larr;');
+    if($(event.target).hasClass('read-on')){
+      $(event.target).attr('class','less')
+      $(event.target).parent().children().children().show();
+      $(event.target).html('Show Less &larr;');
+    }else{
+      $(event.target).attr('class','read-on')
+      $('.article-body *:nth-of-type(n+2)').hide();
+      $(event.target).html('Read on &rarr;');
+    }
   });
   // STRETCH GOAl!: change the 'Read On' link to 'Show Less'
 
