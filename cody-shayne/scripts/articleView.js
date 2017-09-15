@@ -63,6 +63,7 @@ articleView.handleCategoryFilter = function() {
       $('author-filter').val('');
       $('article').css('display', 'none');
       $('article[data-category="' + this.value + '"]').show();
+      $('#author-filter').val('')
     } else {
       $('article').show();
       $('.template').hide();
@@ -76,15 +77,18 @@ articleView.handleMainNav = function() {
   //       single .tab-content section that is associated with the clicked .tab element.
   //       So: You need to dynamically build a selector string with the correct ID, based on the
   //       data available to you on the .tab element that was clicked.
-  $('.icon-home').click(function(){
-    $('section#articles').show();
-    $('section#about').hide();
+  $('.main-nav').click(function(event){
+    if($(event.target).hasClass('icon-home')){
+      $('section#articles').show();
+      $('section#about').hide();
+    }else{
+      $('section#about').show();
+      $('section#articles').hide();
+    }
   })
-  $('.icon-address-book').click(function(){
-    $('section#about').show();
-    $('section#articles').hide();
-  })
-  $('.main-nav .tab').click(); // Let's now trigger a click on the first .tab element, to set up the page.
+  // $('.icon-address-book').click(function(){
+  // })
+  $('.main-nav .tab :first').click(); // Let's now trigger a click on the first .tab element, to set up the page.
 };
 
 articleView.setTeasers = function() {
