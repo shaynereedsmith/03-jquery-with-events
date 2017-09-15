@@ -78,16 +78,15 @@ articleView.handleMainNav = function() {
   //       So: You need to dynamically build a selector string with the correct ID, based on the
   //       data available to you on the .tab element that was clicked.
   $('.main-nav').click(function(event){
+    $('.tab-content').hide();
     if($(event.target).hasClass('icon-home')){
       $('section#articles').show();
-      $('section#about').hide();
-    }else{
+    }else if($(event.target).hasClass('icon-address-book')){
       $('section#about').show();
-      $('section#articles').hide();
+    }else{
+      $('.tab-content').show();
     }
   })
-  // $('.icon-address-book').click(function(){
-  // })
   $('.main-nav .tab :first').click(); // Let's now trigger a click on the first .tab element, to set up the page.
 };
 
